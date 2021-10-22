@@ -8,7 +8,6 @@ const bodyContainer = document.getElementById('bodyContainer');
 const subtotalAmount = document.getElementById('subtotalAmount');
 const totalAmount = document.getElementById('totalAmount');
 
-let value = 1;
 let total = 0;
 window.setTimeout(_ => {
     total = parseInt(subtotalAmount.innerHTML.substr(1));
@@ -38,7 +37,7 @@ function createProductsOfCart(productData) {
         </td>
         <td class="product_quantity"> 
             <input type="number" min="1" max="100"
-            value=${value} class='quantityInput'>
+            value=1 class='quantityInput'>
         </td>
         <td class="product_total inner_product_total">
             $${productData.price}
@@ -50,17 +49,12 @@ function createProductsOfCart(productData) {
     const product_total = cartEl.querySelector('.inner_product_total');
     quantityInput.addEventListener('input', _ => {
         const quantity = parseInt(quantityInput.value);
-        value = quantity.toString();
         product_total.innerHTML = `$${productData.price * quantity}`;
         total += productData.price;
         subtotalAmount.innerHTML = `$${total}`;
         totalAmount.innerHTML = `$${total}`;
         total = parseInt(subtotalAmount.innerHTML.substr(1));
     });
-
-    // set value to input:
-    quantityInput.value = value;
-    product_total.innerHTML = `$${productData.price * value}`;
 
     const remove_product_btn = cartEl.querySelector('.remove_product_btn');
     remove_product_btn.addEventListener('click', _ => {
