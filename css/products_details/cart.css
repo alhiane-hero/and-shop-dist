@@ -984,6 +984,7 @@ aside .mobile-contact .user-links li a:hover {
 
 .cart .table_desc {
   border: 1px solid #ededed;
+  overflow: auto;
 }
 
 .cart .table_desc .table_page table {
